@@ -20,11 +20,11 @@ while True:
 	#col_grade = 'A'
 
 	
-	if col_total < 40:
-		col_grade = 'F'
-		F += 1
-	else:
-		col_grade = 'Q'
+	#if col_total < 40:
+	#	col_grade = 'F'
+	#	F += 1
+	#else:
+	col_grade = 'Q'
 
 	sheet_ranges.cell(row = row_num, column = 7, value = col_total)
 	sheet_ranges.cell(row = row_num, column = 8, value = col_grade)
@@ -35,7 +35,7 @@ AP = int(stu_num * 0.15)
 A = int(stu_num * 0.3) - AP
 BP = int(stu_num * 0.2)
 B = int(stu_num * 0.4) - BP
-re = stu_num - AP - A - BP - B - F
+re = stu_num - AP - A - BP - B #- F
 CP = re // 2
 C = re - CP
 
@@ -43,7 +43,7 @@ grade_num = [AP, A, BP, B, CP, C]
 print(grade_num)
 grade_str = ["A+", "A0", "B+", "B0", "C+", "C0"]
 
-num = F
+num = 0
 n = 0
 while num != stu_num:
 	best = -100
