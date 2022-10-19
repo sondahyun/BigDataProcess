@@ -17,13 +17,6 @@ while True:
 		break
 	
 	col_total = col_midterm * 0.3 + col_final * 0.35 + col_homework * 0.34 + col_attendance
-	#col_grade = 'A'
-
-	
-	#if col_total < 40:
-	#	col_grade = 'F'
-	#	F += 1
-	#else:
 	col_grade = 'Q'
 
 	sheet_ranges.cell(row = row_num, column = 7, value = col_total)
