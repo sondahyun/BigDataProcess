@@ -40,7 +40,7 @@ def makevector(filename) :
         lineStr = fr.readline()
         for j in range(32):
             returnVect[0, 32*i+j] = int(lineStr[j])
-            
+
     return returnVect
 
 def test(k):
@@ -49,19 +49,19 @@ def test(k):
     m = len(trainingFileList)
     trainingMat = np.zeros((m, 1024))
     for i in range(m):
-        fullfileName = trainingFileList[i]
-        fileName = fullfileName.split('.')[0]
+        fullName = trainingFileList[i]
+        fileName = fullName.split('.')[0]
         classNum = int(fileName.split('_')[0])
         labels.append(classNum)
-        trainingMat[i, :] = makevector('%s/%s' % (trainingfile, fullfileName))
+        trainingMat[i, :] = makevector('%s/%s' % (trainingfile, fullName))
     testFileList = listdir(testfile)
     errorCount = 0
     mTest = len(testFileList)
     for i in range(mTest):
-        fullfileName = testFileList[i]
-        fileName = fullfileName.split('.')[0]
+        fullName = testFileList[i]
+        fileName = fullName.split('.')[0]
         classNum = int(fileName.split('_')[0])
-        vectorUnderTest = makevector('%s/%s' % (testfile, fullfileName))
+        vectorUnderTest = makevector('%s/%s' % (testfile, fullName))
         classifierResult = classify0(vectorUnderTest, trainingMat, labels, k)
         if (classifierResult != classNum) :
             errorCount += 1
