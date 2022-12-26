@@ -5,6 +5,7 @@ import operator
 import sys
 trainingfile = sys.argv[1]
 testfile = sys.argv[2]
+
 def autoNorm(dataSet):
     minVals = dataSet.min(0)
     maxVals = dataSet.max(0)
@@ -23,19 +24,23 @@ def classify0(inX, dataSet, labels, k):
     distances = sqDistances ** 0.5
     sortedDistIndicies = distances.argsort()
     classCount = {}
+
     for i in range(k):
         voteIlabel = labels[sortedDistIndicies[i]]
         classCount[voteIlabel] = classCount.get(voteIlabel, 0) + 1
+
     sortedClassCount = sorted(classCount.items(), key=operator.itemgetter(1), reverse=True)
     return sortedClassCount[0][0]
 
 def makevector(filename) :
     returnVect = np.zeros((1, 1024))
     fr = open(filename)
+
     for i in range(32):
         lineStr = fr.readline()
         for j in range(32):
             returnVect[0, 32*i+j] = int(lineStr[j])
+            
     return returnVect
 
 def test(k):
